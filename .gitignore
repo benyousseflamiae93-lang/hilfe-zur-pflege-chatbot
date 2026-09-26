@@ -110,3 +110,23 @@ typebot-export-*.json
 # ============================================================
 .ollama/
 models/
+
+# ============================================================
+# Flutter / Dart
+# ============================================================
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+*.app
+ephemeral/
+Pods/
+flutter_app/build/
+flutter_app/.dart_tool/
+flutter_app/macos/Flutter/ephemeral/
+flutter_app/macos/Pods/
+flutter_app/ios/Pods/
+flutter_app/windows/flutter/ephemeral/
+
