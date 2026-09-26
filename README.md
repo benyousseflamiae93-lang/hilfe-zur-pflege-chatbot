@@ -215,6 +215,6 @@ This project was developed as a university IT project for the Landkreis Hildeshe
 
 ## 👩‍💻 Author
 
-**Lamiae Ben Youssef**  
+**Lamiae Benyoussef**  
 IT-Projekt — Hilfe zur Pflege  
 Landkreis Hildesheim · 2026
