@@ -1,0 +1,112 @@
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+pip-wheel-metadata/
+*.pyc
+*.pyd
+
+# ============================================================
+# Virtual Environment
+# ============================================================
+.venv/
+venv/
+env/
+ENV/
+.env.bak
+
+# ============================================================
+# Environment / Secrets — NEVER upload!
+# ============================================================
+.env
+.env.local
+.env.production
+secrets.json
+config.secret.*
+api_keys.txt
+# DO NOT exclude .env.example — it's a safe template!
+
+# ============================================================
+# FastAPI / Uvicorn
+# ============================================================
+uvicorn.log
+*.log
+
+# ============================================================
+# Databases — contain personal data!
+# ============================================================
+applications.db
+applications.db-shm
+applications.db-wal
+*.db
+*.sqlite
+*.sqlite3
+database_export.csv
+
+# ============================================================
+# ChromaDB — vector database (auto-generated, large)
+# ============================================================
+chroma_db/
+
+# ============================================================
+# Generated PDFs — contain personal data!
+# ============================================================
+generated_pdfs/
+
+# Note: PDF/ source documents and Antrag template ARE included
+# They are public reference documents needed for RAG system
+
+# ============================================================
+# ngrok — binary and logs
+# ============================================================
+ngrok
+ngrok.log
+ngrok.exe
+
+# ============================================================
+# PyCharm / JetBrains IDE
+# ============================================================
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+
+# ============================================================
+# macOS
+# ============================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+Thumbs.db
+
+# ============================================================
+# Large installer files
+# ============================================================
+*.dmg
+*.pkg
+*.exe
+
+# ============================================================
+# Typebot export (may contain internal config/tokens)
+# ============================================================
+typebot-export-*.json
+
+# ============================================================
+# Ollama models (auto-downloaded, very large)
+# ============================================================
+.ollama/
+models/
