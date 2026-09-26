@@ -8,7 +8,7 @@ A fully self-hosted, AI-powered care assistance application for the *Hilfe zur P
 
 ## ✨ Features
 
-- 📱 **Native Flutter App** — Cross-platform app for macOS, iOS, Android, Web & Windows with custom UI
+- 📱 **Native Flutter Chat UI** — Cross-platform chat interface for macOS, iOS, Android, Web & Windows with native message bubbles
 - 🤖 **AI Chatbot** — Answers questions about care assistance (Pflegehilfe) using local LLM (Mistral 7B via Ollama)
 - 📄 **RAG System** — Retrieval-Augmented Generation using ChromaDB and real care documents
 - 🧠 **Conversation Memory** — Remembers user name and context within a session
@@ -26,29 +26,31 @@ A fully self-hosted, AI-powered care assistance application for the *Hilfe zur P
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│              User Interface (Flutter Desktop / Web)          │
+│                 Flutter Native App (Client)                 │
+│      (Native UI Chat Interface, TTS, Local Translation)     │
 └──────────────────────┬──────────────────────────────────────┘
                        │
-           ┌───────────▼───────────┐
-           │    Typebot Viewer     │  Port 8081 (Docker)
-           │   (Chat Interface)    │
-           └───────────┬───────────┘
+                       │ Typebot REST API (startChat / continueChat)
+            ┌──────────▼───────────┐
+            │    Typebot Viewer    │  Port 8081 (Docker)
+            │   (Workflow Engine)  │
+            └──────────┬───────────┘
                        │ HTTP Webhook (POST /ask or /submit_application)
                        │ via ngrok HTTPS tunnel
-           ┌───────────▼───────────┐
-           │   FastAPI Backend     │  Port 8000 (Python)
-           │      main.py          │
-           └──┬──────────┬─────────┘
-              │          │
-   ┌──────────▼──┐  ┌────▼──────────┐
-   │  ChromaDB   │  │  Ollama       │
-   │  (RAG Docs) │  │  Mistral 7B   │
-   └─────────────┘  └───────────────┘
-              │
-   ┌──────────▼──────────┐
-   │  SQLite Database    │  (submitted applications)
-   │  PyMuPDF PDF Fill   │  (generated_pdfs/)
-   └─────────────────────┘
+            ┌──────────▼───────────┐
+            │   FastAPI Backend    │  Port 8000 (Python)
+            │       main.py        │
+            └──┬──────────┬────────┘
+               │          │
+    ┌──────────▼──┐  ┌────▼──────────┐
+    │  ChromaDB   │  │  Ollama       │
+    │  (RAG Docs) │  │  Mistral 7B   │
+    └─────────────┘  └───────────────┘
+               │
+    ┌──────────▼──────────┐
+    │  SQLite Database    │  (submitted applications)
+    │  PyMuPDF PDF Fill   │  (generated_pdfs/)
+    └─────────────────────┘
 ```
 
 ---
@@ -57,9 +59,9 @@ A fully self-hosted, AI-powered care assistance application for the *Hilfe zur P
 
 | Layer | Technology | Purpose |
 |---|---|---|
-| **Client App** | [Flutter](https://flutter.dev) + Dart | Cross-platform native app (macOS, iOS, Android, Web) |
-| **Workflow Engine** | [Typebot](https://typebot.io) (Docker) | Guided conversational flow & input validation |
-| **Backend API** | [FastAPI](https://fastapi.tiangolo.com) + Uvicorn | REST API, AI logic, PDF generation |
+| **Chat Interface** | [Flutter](https://flutter.dev) + Dart | Native cross-platform Chat UI (macOS, iOS, Android, Web) |
+| **Workflow Engine** | [Typebot](https://typebot.io) (Docker) | Conversational flow state machine & REST API |
+| **Backend API** | [FastAPI](https://fastapi.tiangolo.com) + Uvicorn | REST API, AI RAG logic, PDF generation & Admin Auth |
 | **LLM** | [Ollama](https://ollama.com) + Mistral 7B | Local AI — no internet required |
 | **Vector DB** | [ChromaDB](https://www.trychroma.com) | Semantic search over care documents |
 | **App Database** | SQLite | Stores submitted application forms |
@@ -73,7 +75,7 @@ A fully self-hosted, AI-powered care assistance application for the *Hilfe zur P
 
 ```
 .
-├── flutter_app/                     # 📱 Flutter cross-platform source code
+├── flutter_app/                     # 📱 Flutter cross-platform source code (Chat UI)
 │   ├── lib/                         # Dart source code (screens, widgets, providers)
 │   ├── macos/                       # macOS desktop build project
 │   ├── android/                     # Android build project
