@@ -83,7 +83,7 @@ A fully self-hosted, AI-powered care assistance application for the *Hilfe zur P
 │   ├── web/                         # Web build project
 │   ├── pubspec.yaml                 # Flutter dependencies & metadata
 │   └── ...
-├── main.py                          # 🐍 FastAPI app — all endpoints, RAG and AI logic
+├── main.py                          # FastAPI app — all endpoints, RAG and AI logic
 ├── ingest_pdf.py                    # Script to load PDF documents into ChromaDB
 ├── restart.sh                       # Start FastAPI + ngrok in background
 ├── requirements.txt                 # Python dependencies
@@ -107,7 +107,7 @@ A fully self-hosted, AI-powered care assistance application for the *Hilfe zur P
 
 ---
 
-## 🚀 Installation & Setup
+##  Installation & Setup
 
 ### Prerequisites
 
